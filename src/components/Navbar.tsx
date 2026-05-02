@@ -27,6 +27,7 @@ export function Navbar() {
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#home" className="font-display font-bold text-lg tracking-wide">
+
   <span className="text-white">Kavila</span>
   <span className="text-gradient">Xtech</span>
 </a>
