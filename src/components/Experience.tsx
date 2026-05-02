@@ -1,84 +1,111 @@
-import { Briefcase } from "lucide-react";
+import { useState } from "react";
+import { Briefcase, ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
 
 const items = [
   {
-    role: "Machine Learning Intern",
-    company: "Intrusion Detection System Project",
-    period: "2025",
+    role: "Web Development Intern",
+    company: "E-commerce Platform",
+    certificate: "/certificates/eagle.pdf",
     points: [
-      "Designed and trained ML models to classify network traffic and detect anomalies.",
-      "Improved detection accuracy through feature engineering and model comparison.",
+      "Developed responsive UI and integrated backend data.",
+      "Implemented cart, product listing, and checkout modules.",
     ],
-    tools: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+    tools: ["HTML", "CSS", "JavaScript"],
   },
   {
     role: "Data Science Intern",
     company: "Heart Disease Prediction",
-    period: "2024",
+    certificate: "/certificates/ekhai.pdf",
     points: [
-      "Built predictive models on medical datasets to estimate disease risk.",
-      "Performed EDA, preprocessing, and evaluation across multiple algorithms.",
+      "Developed predictive models on healthcare datasets.",
+      "Performed EDA and model evaluation across multiple algorithms.",
     ],
-    tools: ["Python", "Pandas", "Matplotlib", "ML"],
+    tools: ["Python", "Pandas", "Matplotlib"],
   },
   {
-    role: "Web Development Intern",
-    company: "E-commerce Platform",
-    period: "2023",
+    role: "Machine Learning Intern",
+    company: "Intrusion Detection System",
+    certificate: "/certificates/vulture.pdf",
     points: [
-      "Developed responsive frontend pages and integrated backend data flows.",
-      "Implemented cart, product, and checkout modules with clean UI.",
+      "Built ML models to detect anomalous network traffic patterns.",
+      "Improved detection accuracy using feature engineering.",
     ],
-    tools: ["HTML", "CSS", "JavaScript"],
+    tools: ["Python", "Scikit-learn", "Pandas"],
   },
 ];
 
 export function Experience() {
+  const [selected, setSelected] = useState<string | null>(null);
+
   return (
     <section id="experience" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
+
         <SectionHeader
           eyebrow="Experience"
-          title="Hands-on internships across AI, data, and the web."
+          title="Internships & Real-World Work"
         />
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 sm:left-6 top-2 bottom-2 w-px bg-gradient-to-b from-primary via-accent/50 to-transparent" />
+        <div className="relative mt-12">
 
-          <div className="space-y-8">
+          {/* Timeline Line */}
+          <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary to-accent" />
+
+          <div className="space-y-10">
             {items.map((it, i) => (
               <Reveal key={it.role} delay={i * 100}>
-                <div className="relative pl-12 sm:pl-16">
-                  <div
-                    className="absolute left-0 sm:left-2 top-1 w-8 h-8 rounded-full flex items-center justify-center"
-                    style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}
-                  >
-                    <Briefcase size={14} className="text-primary-foreground" />
+                <div className="relative pl-12">
+
+                  {/* Icon */}
+                  <div className="absolute left-0 top-2 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white shadow-glow">
+                    <Briefcase size={14} />
                   </div>
-                  <div className="glass-card hover-lift rounded-2xl p-6">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                      <h3 className="text-lg font-semibold">{it.role}</h3>
-                      <span className="text-xs text-accent font-medium">{it.period}</span>
+
+                  {/* Card */}
+                  <div className="glass-card p-6 rounded-2xl hover-lift">
+
+                    {/* 🔥 HEADER WITH RIGHT BUTTON */}
+                    <div className="flex justify-between items-start mb-3 gap-4">
+
+                      <div>
+                        <h3 className="font-semibold">{it.role}</h3>
+                        <p className="text-sm text-muted-foreground">
+                          {it.company}
+                        </p>
+                      </div>
+
+                      {/* BUTTON RIGHT SIDE */}
+                      <button
+                        onClick={() => setSelected(it.certificate)}
+                        className="flex items-center gap-1 text-xs px-3 py-1.5 border border-primary/40 rounded-md hover:bg-primary/10 whitespace-nowrap"
+                      >
+                        View Certificate
+                        <ExternalLink size={12} />
+                      </button>
+
                     </div>
-                    <div className="text-sm text-muted-foreground mb-4">{it.company}</div>
-                    <ul className="space-y-2 mb-4">
+
+                    {/* POINTS */}
+                    <ul className="text-sm text-muted-foreground space-y-1 mb-4">
                       {it.points.map((p) => (
-                        <li key={p} className="text-sm text-muted-foreground flex gap-2">
-                          <span className="mt-1.5 w-1 h-1 rounded-full bg-accent shrink-0" />
-                          {p}
-                        </li>
+                        <li key={p}>• {p}</li>
                       ))}
                     </ul>
+
+                    {/* TOOLS */}
                     <div className="flex flex-wrap gap-2">
                       {it.tools.map((t) => (
-                        <span key={t} className="text-[11px] px-2 py-1 rounded-md bg-primary/10 border border-primary/20">
+                        <span
+                          key={t}
+                          className="text-xs px-2 py-1 bg-primary/10 rounded"
+                        >
                           {t}
                         </span>
                       ))}
                     </div>
+
                   </div>
                 </div>
               </Reveal>
@@ -86,6 +113,24 @@ export function Experience() {
           </div>
         </div>
       </div>
+
+      {/* POPUP */}
+      {selected && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-background rounded-xl w-full max-w-4xl relative">
+
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-3 right-4 text-lg"
+            >
+              ✕
+            </button>
+
+            <iframe src={selected} className="w-full h-[75vh]" />
+
+          </div>
+        </div>
+      )}
     </section>
   );
 }
