@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== THEME ===== */
+:root {
+  --background: #0b1120;
+  --foreground: #e5e7eb;
+
+  --primary: #6366f1;
+  --accent: #22d3ee;
+
+  --gradient-primary: linear-gradient(135deg, #6366f1, #22d3ee);
+  --gradient-hero: radial-gradient(circle at top, rgba(99,102,241,0.25), transparent 60%),
+                   radial-gradient(circle at bottom right, rgba(34,211,238,0.2), transparent 60%);
+
+  --shadow-glow: 0 0 40px rgba(99,102,241,0.4);
+}
+
+/* ===== BASE ===== */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  background-image: var(--gradient-hero);
+  background-attachment: fixed;
+  font-family: system-ui, sans-serif;
+}
+
+/* ===== TEXT ===== */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* ===== HOVER ===== */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(99,102,241,0.3);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
