@@ -80,3 +80,38 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* ===== NAVBAR PREMIUM EFFECT ===== */
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+/* hover effects */
+.nav-link:hover {
+  color: white;
+  transform: translateY(-3px) scale(1.08) rotateX(5deg);
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.8);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* subtle 3D tilt feel */
+.nav-link:active {
+  transform: scale(0.95);
+}

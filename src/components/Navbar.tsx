@@ -32,18 +32,18 @@ export function Navbar() {
   <span className="text-white">Kavila</span>
   <span className="text-gradient">Xtech</span>
 </a>
-        <ul className="hidden md:flex items-center gap-8 text-sm">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
+  {links.map((l) => (
+    <li key={l.href}>
+      <a
+        href={l.href}
+        className="nav-link text-muted-foreground"
+      >
+        {l.label}
+      </a>
+    </li>
+  ))}
+</ul>
         <a
           href="#contact"
           className="hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-primary/10 border border-primary/30 text-foreground hover:bg-primary/20 transition-colors"
